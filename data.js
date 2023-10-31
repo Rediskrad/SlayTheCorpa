@@ -363,12 +363,12 @@ const cards = {
 		shopCost: 10,
 		handler: (target) => {
 			const dmg = 2;
+			playSound('throw');
+			setTimeout(() => playSound('throw'), 100);
+			setTimeout(() => playSound('throw'), 200);
 			for (let enemy of gameState.enemies) {
 				if (enemy.alive) {
 					for (let i = 0; i < 3; i++) {
-						playSound('throw');
-						setTimeout(() => playSound('throw'), 200);
-						//setTimeout(() => playSound('throw'), 200);
 						gameState.animations.push({
 							type: 'PROJECTILE',
 							x: enemy.x + enemy.width / 2 + Math.random() * 150 - 75,
@@ -1068,8 +1068,8 @@ const enemies = {
 		buffs: []
 	},
 	'zen': {
-		life: 200,
-		maxLife: 200,
+		life: 250,
+		maxLife: 250,
 		shield: 0,
 		width: 525,
 		height: 300,
@@ -1080,14 +1080,14 @@ const enemies = {
 		actions: [
 			enemyActions['melee_attack'](22, 2),
 			enemyActions['toaster'](18, 8),
-			enemyActions['shield_up'](14, 2),
+			enemyActions['shield_up'](16, 2),
 			enemyActions['buff_dmg'](1, 2),
 		],
 		buffs: []
 	},
 	'evil': {
-		life: 300,
-		maxLife: 300,
+		life: 350,
+		maxLife: 350,
 		shield: 0,
 		width: 100,
 		height: 300,
@@ -1096,9 +1096,9 @@ const enemies = {
 		alive: true,
 		imgId: 'evil',
 		actions: [
-			enemyActions['swarm_attack'](24, 5),
-			enemyActions['gaslight'](2, 2),
-			enemyActions['shield_up'](16, 1),
+			enemyActions['swarm_attack'](25, 5),
+			enemyActions['gaslight'](3, 2),
+			enemyActions['shield_up'](20, 1),
 			enemyActions['buff_dmg'](1, 2),
 			enemyActions['summon'](1, 1),
 		],
